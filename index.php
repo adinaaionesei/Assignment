@@ -10,14 +10,14 @@
     <body>
         <div class="container">
             <h2>Type your name</h2>
-            <form>
+            <form method="post" action="game.php">
                 <div class="form-group">
                     <label for="player1">Player 1:</label><br>
-                    <input type="text" id="player1" class="form-control" name="player1"><br>
+                    <input type="text" id="player1" class="form-control" name="player1" required><br>
                 </div>
                 <div class="form-group">
                     <label for="player2">Player 2:</label><br>
-                    <input type="text" id="player2" class="form-control" name="player2"><br><br>
+                    <input type="text" id="player2" class="form-control" name="player2" required><br><br>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
