@@ -11,6 +11,12 @@
 .primary-color {
     color: lightpink;
 }
+.red {
+    color: red;
+}
+.green {
+    color: green;
+}
 .btn {
     background-color: lightpink !important;
     color: white !important;

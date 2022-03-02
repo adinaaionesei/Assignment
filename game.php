@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION['player1'] = $_POST['player1'];
+$_SESSION['player2'] = $_POST['player2'];
+?>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/html">
@@ -14,25 +19,49 @@
 <body class="primary-color">
     <div class="container">
         <h2 class="center primary-color">Tic Tac Toe</h2>
-        <form class="center">
-            <table class="center">
-                <tr>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                </tr>
-                <tr>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                </tr>
-                <tr>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                </tr>
-            </table>
-            <button type="submit" class="btn">Submit</button>
+        <form class="center" method="post" action="result.php">
+            <div class="row">
+                <div class="col-3 red">
+                    <div><?php echo $_SESSION['player1']?></div>
+                    <div>x</div>
+                </div>
+                <table class="center col-6">
+                    <tr>
+                        <td class="cell" data-id="1"></td>
+                        <td class="cell" data-id="2"></td>
+                        <td class="cell" data-id="3"></td>
+                    </tr>
+                    <tr>
+                        <td class="cell" data-id="4"></td>
+                        <td class="cell" data-id="5"></td>
+                        <td class="cell" data-id="6"></td>
+                    </tr>
+                    <tr>
+                        <td class="cell" data-id="7"></td>
+                        <td class="cell" data-id="8"></td>
+                        <td class="cell" data-id="9"></td>
+                    </tr>
+                </table>
+                <div class="col-3 green">
+                    <div><?php echo $_SESSION['player2']?></div>
+                    <div>o</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="hidden" id="move-1" name="move[1]" />
+                    <input type="hidden" id="move-2" name="move[2]" />
+                    <input type="hidden" id="move-3" name="move[3]" />
+                    <input type="hidden" id="move-4" name="move[4]" />
+                    <input type="hidden" id="move-5" name="move[5]" />
+                    <input type="hidden" id="move-6" name="move[6]" />
+                    <input type="hidden" id="move-7" name="move[7]" />
+                    <input type="hidden" id="move-8" name="move[8]" />
+                    <input type="hidden" id="move-9" name="move[9]" />
+
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </div>
         </form>
     </div>
 <script type="text/javascript">
