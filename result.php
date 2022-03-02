@@ -1,5 +1,8 @@
 <?php
 session_start();
+include ("db.php");
+include ("functions.php");
+
 $moves = $_POST['move'];
 $winningCombinations = [
     [1, 2, 3],
@@ -40,6 +43,7 @@ foreach ($moves as $move => $cell) {
         }
     }
 }
+addGame($con, $_SESSION['player1'], $_SESSION['player2'], $winner, serialize($moves), 'finished');
 if ($winner == null) {
     echo "Tie";
 } else {
