@@ -65,6 +65,8 @@ addGame($con, $_SESSION['player1'], $_SESSION['player2'], $winner, serialize($mo
         <?php } else { ?>
         <p class="box">The winner is <?php echo $winner ?></p>
         <?php } ?>
+        <div><a href="/assignment/game.php" class="btn">Rematch</a></div>
+        <div><a href="/assignment/index.php" class="btn">New Game</a></div>
     </div>
 </body>
 </html>

@@ -1,7 +1,9 @@
 <?php
 session_start();
-$_SESSION['player1'] = $_POST['player1'];
-$_SESSION['player2'] = $_POST['player2'];
+if (!isset($_SESSION['player1']) && !isset($_SESSION['player2'])) {
+    $_SESSION['player1'] = $_POST['player1'];
+    $_SESSION['player2'] = $_POST['player2'];
+}
 ?>
 <!DOCTYPE html>
 
@@ -65,6 +67,7 @@ $_SESSION['player2'] = $_POST['player2'];
 
                     <button type="submit" class="btn">Submit</button>
                     <div class="message"></div>
+                    <div><a href="/assignment/index.php" class="btn">Leave Game</a></div>
                 </div>
             </div>
         </form>
