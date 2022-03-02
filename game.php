@@ -22,8 +22,10 @@ $_SESSION['player2'] = $_POST['player2'];
         <form class="center" method="post" action="result.php">
             <div class="row">
                 <div class="col-3 red">
-                    <div><?php echo $_SESSION['player1']?></div>
-                    <div>x</div>
+                    <div class="turnx">
+                        <div><?php echo $_SESSION['player1']?>'s turn to move</div>
+                        <div>x</div>
+                    </div>
                 </div>
                 <table class="center col-6">
                     <tr>
@@ -43,8 +45,10 @@ $_SESSION['player2'] = $_POST['player2'];
                     </tr>
                 </table>
                 <div class="col-3 green">
-                    <div><?php echo $_SESSION['player2']?></div>
-                    <div>o</div>
+                    <div class="turno">
+                        <div><?php echo $_SESSION['player2']?>'s turn to move</div>
+                        <div>o</div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -60,6 +64,7 @@ $_SESSION['player2'] = $_POST['player2'];
                     <input type="hidden" id="move-9" name="move[9]" />
 
                     <button type="submit" class="btn">Submit</button>
+                    <div class="message"></div>
                 </div>
             </div>
         </form>

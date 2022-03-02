@@ -22,3 +22,14 @@
     color: white !important;
     margin-top: 20px;
 }
+.turno {
+    display: none;
+}
+.box {
+    background-color: pink;
+    color: white;
+    display: inline-block;
+    margin-top: 200px;
+    padding: 50px;
+    border-radius: 30px;
+}
