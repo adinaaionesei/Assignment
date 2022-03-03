@@ -17,12 +17,16 @@ $winningCombinations = [
 $player1 = [];
 $player2 = [];
 $winner = null;
-
+$emptyCell = false;
 foreach ($moves as $move => $cell) {
     if($move %2 != 0) {
         $player1[$move] = $cell;
     } else {
         $player2[$move] = $cell;
+    }
+    //check if empty cell is found
+    if ($cell == '') {
+        $emptyCell = true;
     }
     if (count($player1) >= 3) {
         foreach ($winningCombinations as $combination) {
@@ -46,7 +50,12 @@ foreach ($moves as $move => $cell) {
         break;
     }
 }
-addGame($con, $_SESSION['player1'], $_SESSION['player2'], $winner, serialize($moves), 'finished');
+if($emptyCell == true && $winner == null) {
+    $status = "unfinished";
+} else {
+    $status = "finished";
+}
+addGame($con, $_SESSION['player1'], $_SESSION['player2'], $winner, serialize($moves), $status);
 ?>
 <!DOCTYPE html>
 
@@ -63,10 +72,12 @@ addGame($con, $_SESSION['player1'], $_SESSION['player2'], $winner, serialize($mo
 </head>
 <body class="primary-color">
     <div class="container center">
-        <?php if ($winner == null) { ?>
-        <p class="box">The game was tie</p>
+        <?php if ($status == "unfinished") { ?>
+            <p class="box">The game was unfinished</p>
+        <?php } elseif ($winner == null) { ?>
+            <p class="box">The game was tie</p>
         <?php } else { ?>
-        <p class="box">The winner is <?php echo $winner ?></p>
+            <p class="box">The winner is <?php echo $winner ?></p>
         <?php } ?>
         <div><a href="/assignment/game.php" class="btn">Rematch</a></div>
         <div><a href="/assignment/index.php" class="btn">New Game</a></div>
