@@ -42,6 +42,9 @@ foreach ($moves as $move => $cell) {
             }
         }
     }
+    if ($winner != null) {
+        break;
+    }
 }
 addGame($con, $_SESSION['player1'], $_SESSION['player2'], $winner, serialize($moves), 'finished');
 ?>
