@@ -22,6 +22,7 @@ $_SESSION = array();?>
                     <input type="text" id="player2" class="form-control" name="player2" required><br><br>
                 </div>
                 <button type="submit" class="btn">Submit</button>
+                <div><a href="/assignment/finished_games.php" class="btn">Finished Games</a></div>
             </form>
         </div>
     </body>
