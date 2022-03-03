@@ -1,8 +1,14 @@
 <?php
 session_start();
+include ("functions.php");
+
 if (!isset($_SESSION['player1']) && !isset($_SESSION['player2'])) {
     $_SESSION['player1'] = $_POST['player1'];
     $_SESSION['player2'] = $_POST['player2'];
+}
+$unfinishedGame = getUnfinishedGame($con,$_POST['player1'], $_POST['player2']);
+if ( count ($unfinishedGame) > 0){
+    echo "You have unfinished games";
 }
 ?>
 <!DOCTYPE html>

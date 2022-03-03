@@ -16,4 +16,13 @@ function getFinishedGame ($con){
     }
     return $finishedGames;
 }
+function getUnfinishedGame ($con, $firstPlayer, $secondPlayer) {
+    $query = "select * from tic_tac_toe where status = 'unfinished' AND player_1 = '$firstPlayer' AND player_2 = '$secondPlayer' limit 1";
+
+    $result = mysqli_query($con,$query);
+    if($result) {
+        $unfinishedGame = mysqli_fetch_all($result,MYSQLI_ASSOC);
+    }
+    return $unfinishedGame;
+}
 
