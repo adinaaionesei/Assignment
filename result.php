@@ -2,6 +2,7 @@
 session_start();
 include ("db.php");
 include ("functions.php");
+include ("header.php");
 
 $moves = $_POST['move'];
 $winningCombinations = [
@@ -57,19 +58,7 @@ if($emptyCell == true && $winner == null) {
 }
 addGame($con, $_SESSION['player1'], $_SESSION['player2'], $winner, serialize($moves), $status);
 ?>
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content="Description">
-    <link href="css/main.css" rel="stylesheet" />
-    <script src="js/game.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Game Page</title>
-</head>
 <body class="primary-color">
     <div class="container center">
         <?php if ($status == "unfinished") { ?>
