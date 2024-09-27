@@ -1,0 +1,81 @@
+<?php
+session_start();
+include ("functions.php");
+include ("header.php");
+
+if (!isset($_SESSION['player1']) && !isset($_SESSION['player2'])) {
+    $_SESSION['player1'] = $_POST['player1'];
+    $_SESSION['player2'] = $_POST['player2'];
+}
+if ($_POST['player1'] == '' or $_POST['player2'] == '')
+{
+    $_SESSION['error'] = 'Please fill all names';
+    header("Location: index.php");
+}
+$unfinishedGame = getUnfinishedGame($con,$_SESSION['player1'], $_SESSION['player2']);
+if ( count ($unfinishedGame) > 0){
+    echo "You have unfinished games";
+}
+?>
+
+<body class="primary-color">
+    <div class="container">
+        <h2 class="center primary-color">Tic Tac Toe</h2>
+        <form class="center" method="post" action="result.php">
+            <div class="row">
+                <div class="col-3 red">
+                    <div class="turnx">
+                        <div><?php echo $_SESSION['player1']?>'s turn to move</div>
+                        <div>x</div>
+                    </div>
+                </div>
+                <table class="center col-6">
+                    <tr>
+                        <td class="cell" data-id="1"></td>
+                        <td class="cell" data-id="2"></td>
+                        <td class="cell" data-id="3"></td>
+                    </tr>
+                    <tr>
+                        <td class="cell" data-id="4"></td>
+                        <td class="cell" data-id="5"></td>
+                        <td class="cell" data-id="6"></td>
+                    </tr>
+                    <tr>
+                        <td class="cell" data-id="7"></td>
+                        <td class="cell" data-id="8"></td>
+                        <td class="cell" data-id="9"></td>
+                    </tr>
+                </table>
+                <div class="col-3 green">
+                    <div class="turno">
+                        <div><?php echo $_SESSION['player2']?>'s turn to move</div>
+                        <div>o</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="hidden" id="move-1" name="move[1]" />
+                    <input type="hidden" id="move-2" name="move[2]" />
+                    <input type="hidden" id="move-3" name="move[3]" />
+                    <input type="hidden" id="move-4" name="move[4]" />
+                    <input type="hidden" id="move-5" name="move[5]" />
+                    <input type="hidden" id="move-6" name="move[6]" />
+                    <input type="hidden" id="move-7" name="move[7]" />
+                    <input type="hidden" id="move-8" name="move[8]" />
+                    <input type="hidden" id="move-9" name="move[9]" />
+
+                    <button type="submit" class="btn">Submit</button>
+                    <div class="message"></div>
+                    <div><a href="/assignment/index.php" class="btn">Leave Game</a></div>
+                </div>
+            </div>
+        </form>
+    </div>
+<script type="text/javascript">
+    $('.cell').click(function () {
+       move(this);
+    });
+</script>
+</body>
+</html>
